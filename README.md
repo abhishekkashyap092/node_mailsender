@@ -1,6 +1,6 @@
 # node_mailsender
 
-Simple node.js mail sender script with docker
+Simple node.js mail sender script with docker. See http://opstack.info/2015/08/18/send-out-a-lots-of-email-with-node-js-and-docker/ for more information.
 
 # Intended usage
 
