@@ -25,3 +25,4 @@ It's a common scenario to send out a lots of email, and I always want to do thin
 - This script is using nodemailer, so the transport can easily deliver via Sendgrid, Amazon SES, etc...
 - As it's using redis as queueing, it can be separated to a client / server model so you can build an email sending infrastructure; just scale redis and add clients to work from it's queue and you have a hybrid email sending system.
  
+There will be a lots of work if someone wants to use it in production, but if it happens, just let me know and I'll happily assist in the improvements; This thing already did the job what I created for.
