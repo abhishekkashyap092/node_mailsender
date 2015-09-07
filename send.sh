@@ -13,5 +13,5 @@ docker run -d --name ${redis_name} redis || echo "ok, redis is running"
 # TODO: use an init script to ensure that the modules are available
 
 echo "starting send script with $@"
-docker run -ti --rm  --link ${redis_name}:redis --name ${mailsender_name} -v $(pwd):/srv -w /srv/ node node app.js $@
+docker run -ti --rm  --link ${redis_name}:redis --name ${mailsender_name} -v $(pwd):/srv -w /srv/ node node app.js "$@"
 
