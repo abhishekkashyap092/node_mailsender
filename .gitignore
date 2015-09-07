@@ -1,4 +1,6 @@
 node_modules/*
 send_log.txt
 mailsender.log
-
+work/*
+*.swp
+*~

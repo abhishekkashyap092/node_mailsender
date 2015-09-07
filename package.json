@@ -9,7 +9,8 @@
     "nodemailer-smtp-pool": "^1.1.1",
     "sleep": "^3.0.0",
     "nodemailer-smtp-transport": "^1.0.3",
-    "kue": "*"
+    "kue": "*",
+    "minimist": "*"
   },
   "devDependencies": {},
   "scripts": {

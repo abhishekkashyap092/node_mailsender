@@ -1,19 +1,17 @@
 
 // ---------------- define generic variables, so you won't need to search them across this file --------------
-var infile = 'live.csv';
-var email_template = 'email_body.html';
+var argv = require('minimist')(process.argv.slice(2));
+var infile = argv.infile;
+var email_template = argv.email_template;
 
-var email_from = 'noreply@example.org';
-var email_reply = 'noreply@example.org';
-var email_subject = 'example link';
+var email_from = argv.email_from;
+var email_reply = argv.email_reply_to;
+var email_subject = argv.email_subject;
+var smtp_server = argv.smtp_server;
 
-if ( process.argv.indexOf("deliver_queue") > -1 || process.argv.indexOf("fill_queue") > -1 ) {
-    console.log('parameters validated');
-} else {
-    log.info('parameters invalid, usage: ' + process.argv[1] + ' <fill_queue / deliver_queue>');
-    process.exit();
-}
-var behave = process.argv[2];
+var behave = argv.behave; // fill_queue / deliver_queue
+console.log('got arguments: ');
+console.log(argv);
 var bunyan = require('bunyan');
 var nodemailer = require('nodemailer');
 var smtpPool = require('nodemailer-smtp-pool');
@@ -23,7 +21,7 @@ var fs = require('fs'),
 var transporter = nodemailer.createTransport(smtpPool({
   maxConnections: 4,
   maxMessages: 10,
-  host: 'localhost',
+  host: smtp_server,
   secure: false,
   ignoreTLS: true,
   port: 25,
@@ -73,6 +71,7 @@ var rd = readline.createInterface({
 });
 
 // ----- read the template file into a variable ------
+console.log('email template file: ' + email_template);
 var email_torzs = fs.readFileSync(email_template).toString();
 var textfile = email_template;
 
